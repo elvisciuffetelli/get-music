@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 import axios from "axios";
 import {
   spotifyProfileURL
@@ -20,24 +21,22 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h3>
+        <div className="header-container">
+          <Header as='h1' color="yellow">
             {this.state.value}
-            <small>
-              {" "}
-              una React App connessa alle API di Spotify{" "}
-            </small>
-          </h3>
-          <hr/>
+          </Header>
+          <span className="subtitle">
+            una React App connessa alle API di Spotify
+          </span>
         </div>
         <div>
-          <div>
+          <div className="login_button-container">
             <p>
               {this.state.authorized
-                ? "Autorizzato con successo! Clicca giù per entrare"
+                ? "Autorizzato con successo! Clicca per entrare"
                 : "Clicca il bottone per autorizzare il tuo account Spotify ad utilizzare Get Music!"}
             </p>
-              <Button onClick={this.handleAuthFlow}>
+              <Button color='teal' onClick={this.handleAuthFlow}>
               {
                 this.state.authorized
                 ? "Vai a Get Music"
@@ -52,7 +51,6 @@ class Login extends Component {
 
   componentDidMount = () => {
     let url = window.location.href;
-    console.log(url);
     if (url.indexOf("token=") > -1) {
       let authToken = url
         .split("token=")[1]
@@ -63,7 +61,7 @@ class Login extends Component {
         authToken,
         authorized
       });
-      console.log(authToken)
+      console.log(this.state)
     }
   };
 

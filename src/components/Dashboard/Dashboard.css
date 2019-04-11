@@ -1,0 +1,14 @@
+.main-container {
+  width: 100%;
+  text-align: center;
+}
+
+.form-container {
+  height: 100vh;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+
+.input-container {
+  padding-bottom: 2rem;
+}

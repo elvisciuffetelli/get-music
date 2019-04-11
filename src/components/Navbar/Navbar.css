@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #1a1919;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+img.ui.avatar.image {
+  width: 4rem;
+  height: 4rem;
+}
+
+#root .ul-list {
+  display: flex;
+  align-items: baseline;
+  margin-top: 0;
+}
+
+.nav-link {
+  margin-right: 0.5rem;
+}
+
+#root .nav-link > a {
+  color: white;
+  transition: .1s color ease;
+}
+
+#root .nav-link > a:hover {
+  color: #dfdfdf;
+}
