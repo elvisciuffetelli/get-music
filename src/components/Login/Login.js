@@ -67,7 +67,7 @@ class Login extends Component {
         authToken,
         authorized
       });
-      console.log(this.state)
+      window.localStorage.setItem('token', authToken);
     }
   };
 

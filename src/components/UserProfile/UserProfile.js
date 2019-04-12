@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ProfileRow from '../Common/ProfileRow';
 import { Button, Image, Header } from 'semantic-ui-react';
+import img_notFound from '../../assets/images/image-not-found.jpg';
 import { spotifyPlaylistURL } from '../../constants';
 import './UserProfile.css';
 
@@ -17,7 +18,6 @@ class UserProfile extends Component {
   }
 
 render() {
-  console.log(this.state);
     const { 
       images, 
       display_name, 
@@ -33,19 +33,24 @@ render() {
           <Button onClick={this.routeBack} color="yellow" size="tiny" className="btn btn-outline-success">Back</Button>
         </div>
         <div className="user-heading-container">
+        {
+          images.length ?
           <Image
-            avatar
-            src={images[0].url} 
-            alt="spotify user profile image" 
-            className=""
-          />
+          avatar
+          src={images[0].url || img_notFound} 
+          alt="spotify user profile image" 
+          className=""
+          /> :
+          <p></p>
+        }
           <Header as='h1' className="user-name-text">
             {display_name}
-          </Header>                
+          </Header>  
+   
         </div>
         <div className="profile-rows">
-          <ProfileRow text={email} />
-          <ProfileRow text={`${total} followers`} />
+          <ProfileRow text={email || 'email non disponibile'} />
+          <ProfileRow text={`${total || 0} followers`} />
           <Header as='h1' className="playlists-text">
             Public Playlists
           </Header>   
@@ -90,7 +95,7 @@ render() {
           playList.push(
             <div className="" key={index}>
               <Image 
-                src={item.images[0].url}
+                src={item.images[0].url || img_notFound}
                 className=""
                 style={{maxWidth: 300, maxHeight: 300}}
               />
