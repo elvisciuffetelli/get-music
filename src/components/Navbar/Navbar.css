@@ -1,11 +1,14 @@
 .navbar {
+  background-color: #FBBD08;
+  padding: 2rem;
+}
+
+.nav-content-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: #1a1919;
-  padding-left: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  margin-left: 2rem;
+  max-width: 800px;
 }
 
 img.ui.avatar.image {
@@ -24,10 +27,15 @@ img.ui.avatar.image {
 }
 
 #root .nav-link > a {
-  color: white;
+  color: #2185d0;
+  font-weight: 600;
   transition: .1s color ease;
 }
 
 #root .nav-link > a:hover {
-  color: #dfdfdf;
+  color: #929ea7;
+}
+
+.nav-content-container {
+  max-width: 800px;
 }

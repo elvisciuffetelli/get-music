@@ -4,11 +4,24 @@
 }
 
 .form-container {
-  height: 100vh;
   padding-top: 4rem;
   padding-bottom: 1rem;
 }
 
 .input-container {
   padding-bottom: 2rem;
+}
+
+.row {
+  display: flex;   
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  padding-top: 2rem;
+}
+
+.card-container {
+  display: flex;   
+  flex-wrap: wrap;
+  padding: 1rem;
 }

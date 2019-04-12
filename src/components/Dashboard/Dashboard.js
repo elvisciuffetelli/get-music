@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from '../Navbar';
-import { Button } from 'semantic-ui-react';
-import { Input } from 'semantic-ui-react';
-import { Header } from 'semantic-ui-react';
+import { Button, Input, Header } from 'semantic-ui-react';
 import { spotifySearchURL, spotifyArtistURL } from '../../constants';
-//import { Card } from '../common';
+import CustomCard from '../Common/CustomCard';
 import axios from 'axios';
 import './Dashboard.css';
 
@@ -22,7 +20,7 @@ class Dashboard extends Component {
 
   render() {
     const { images, display_name } = this.props.location.state.current_user.user;
-    console.log(this.props.location.state)
+    //console.log(this.props.location.state)
     return (
       <div className="main-container">
         <Navbar
@@ -56,7 +54,7 @@ class Dashboard extends Component {
                 </Button>
               </div>
               <div className="form-group">
-                <p style={{color: '#e74c3c'}}>
+                <p style={{color: '#e74c3c', marginTop: '20px'}}>
                   {this.state.error}
                 </p>
               </div>
@@ -80,21 +78,26 @@ class Dashboard extends Component {
   }
 
   captureSearch = (searchTerm) => {
-    this.setState({ query: searchTerm })
+    this.setState({ query: searchTerm });
   }
 
   searchSpotifyArtists = (event) => {
     event.preventDefault();
-    const { authToken } = this.props.location.state.auth;        
+    const { authToken } = this.props.location.state.auth;
     let artists;
     axios.get(`${spotifySearchURL}${this.state.query}&type=artist&access_token=${authToken}`)
     .then(response => {
         artists = response.data.artists;
-        this.setState({artists, error: ''});
+        if (artists.items.length !== 0) {
+          this.setState({artists, error: ''});
+        } else {
+          this.setState({artists, error: 'La ricerca non ha prodotto nessun risultato'});
+        }
     })
     .catch(error => {
         this.setState({ 
-            error: 'La ricerca non ha prodotto nessun risultato'
+            error: 'Errore! Riprova più tardi',
+            artists: []
         })
     })
   }
@@ -103,18 +106,17 @@ class Dashboard extends Component {
     if (artists !== undefined) {            
         let results = [];
         artists.map((artist, index) => {
-          if(artist.images[0]!=undefined){
+          if (artist.images[0] !== undefined) {
             let hasImage = artist.images[0];
             results.push(
-              <div className="col-md-3">
-             {/*    <Card 
+              <div className="card-container" key={index}>
+                <CustomCard 
                   name={artist.name}
                   id={artist.id}
-                  key={index}
                   imageURL={hasImage.url}
-                  onClick={(event) => this.searchAlbums(event,artist.id, artist.name)}
-                  text="Show Albums"                                                     
-                /> */}
+                  onClick={(event) => this.searchAlbums(event, artist.id, artist.name)}
+                  text="Mostra Albums"                                                     
+                />
               </div>
             )
           }             
@@ -135,9 +137,7 @@ class Dashboard extends Component {
         this.setState({ albums: response.data.items });
         albums = response.data.items;            
       })
-      .then(()=> this.props.history.push(
-        `/artist-albums/${artistId}/${cleanName}`, 
-        { 
+      .then(()=> this.props.history.push(`/artist-albums/${artistId}/${cleanName}`, { 
           data: { albums },
           current_user: { user: this.state.current_user.user },
           auth: { authToken }

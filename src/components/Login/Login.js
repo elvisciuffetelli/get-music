@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
-import { Header } from 'semantic-ui-react';
+import { Button, Header } from 'semantic-ui-react';
+import Loader from '../Common/Loader';
 import axios from "axios";
 import {
   spotifyProfileURL
@@ -14,7 +14,8 @@ class Login extends Component {
       value: "Get Music",
       authToken: "",
       authorized: false,
-      profile: []
+      profile: [],
+      loading: false
     };
   }
 
@@ -43,6 +44,11 @@ class Login extends Component {
                 : "Log in con Spotify"
               }
               </Button>
+              {
+                this.state.loading ?
+               <Loader/> :
+               null
+              }
           </div>
         </div>
       </div>
@@ -75,7 +81,7 @@ class Login extends Component {
         .then(response => {
           this.setState({ profile: response.data });
           user = response.data;
-          console.log(this.state);
+          //console.log(this.state);
         })
         .then(() => this.props.history.push('/get-music', {
           current_user: { user },
@@ -86,6 +92,7 @@ class Login extends Component {
           window.location.assign("https://get-music-mybackend.herokuapp.com/login");
         });
     } else {
+      this.setState({ loading: true });
       window.location="https://get-music-mybackend.herokuapp.com/login";
     }
   };
