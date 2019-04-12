@@ -26,7 +26,7 @@ const CustomCard = ({ imageURL, name, id, onClick, text }) => {
       )
   } else {
       return (
-        <div className="card" key={id}>
+        <div className="card-container" key={id}>
           <div className="card-body" style={styles.trackStyles}>
             <h4 className="card-title">{name}</h4>
             <p className="card-text" />            

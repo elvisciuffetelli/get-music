@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #FBBD08;
+  background-color: #00b5ad;
   padding: 2rem;
 }
 
@@ -27,13 +27,13 @@ img.ui.avatar.image {
 }
 
 #root .nav-link > a {
-  color: #2185d0;
+  color: #fff;
   font-weight: 600;
   transition: .1s color ease;
 }
 
 #root .nav-link > a:hover {
-  color: #929ea7;
+  color: #d1d1d1;
 }
 
 .nav-content-container {
