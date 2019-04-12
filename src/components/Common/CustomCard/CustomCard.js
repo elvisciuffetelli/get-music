@@ -43,7 +43,7 @@ const styles = {
       maxHeight: 200
   },
   trackStyles: {
-      minHeight: 130,
+      minHeight: 60,
       overFlow: 'hidden'
   }
 }

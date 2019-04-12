@@ -1,0 +1,27 @@
+#root .back-button-container {
+  padding: 1.5rem;
+  background-color: #2185d0;
+}
+
+.user-heading-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.profile-rows {
+  max-width: 700px;
+  text-align: center;
+  margin: auto;
+}
+
+#root .user-name-text {
+  margin-left: 1rem;
+}
+
+#root .playlists-text {
+  margin-top: 4rem;
+}

@@ -25,7 +25,7 @@ class AlbumTracks extends Component {
         />
         <div className="justify-content-center mt-5 row">
           <p className="text-center display-5">
-            Displaying tracks from the album { albumNameCleanedUp }
+            Tracce dell'album { albumNameCleanedUp }
           </p>
         </div>
         <div className="show-tracks-container">
