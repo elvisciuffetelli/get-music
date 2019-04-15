@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ProfileRow from '../Common/ProfileRow';
 import { Button, Image, Header } from 'semantic-ui-react';
-import img_notFound from '../../assets/images/image-not-found.jpg';
 import { spotifyPlaylistURL } from '../../constants';
 import './UserProfile.css';
 
@@ -37,7 +36,7 @@ render() {
           images.length ?
           <Image
           avatar
-          src={images[0].url || img_notFound} 
+          src={images[0].url || 'https://cdn.pixabay.com/photo/2017/06/08/17/32/not-found-2384304_1280.jpg'} 
           alt="spotify user profile image" 
           className=""
           /> :
@@ -95,7 +94,7 @@ render() {
           playList.push(
             <div className="" key={index}>
               <Image 
-                src={item.images[0].url || img_notFound}
+                src={item.images[0].url || 'https://cdn.pixabay.com/photo/2017/06/08/17/32/not-found-2384304_1280.jpg'}
                 className=""
                 style={{maxWidth: 300, maxHeight: 300}}
               />

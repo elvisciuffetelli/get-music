@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar';
 import CustomCard from '../Common/CustomCard';
-//import img_notFound from '../../assets/images/image-not-found.jpg';
 import { spotifyAlbumURL } from '../../constants';
 import './ArtistAlbums.css';
 
@@ -67,7 +66,7 @@ render() {
               <CustomCard 
                 name={album.name}
                 id={album.id}
-                imageURL={hasImage.url}
+                imageURL={hasImage.url || 'https://cdn.pixabay.com/photo/2017/06/08/17/32/not-found-2384304_1280.jpg'}
                 onClick={event => this.getAlbumTracks(event, album.id, album.name)}
                 text="Mostra tracce"                                                     
               />

@@ -14,11 +14,6 @@ class Navbar extends Component {
             <Image className="nav-image" src={this.props.imageURL} avatar />
             <List as="ul" link className="ul-list">
               <List.Item className="nav-link">
-                <Link className="nav-link" to="/">
-                  Get Music
-                </Link>
-              </List.Item>
-              <List.Item className="nav-link">
                 <Link 
                   className="nav-link" 
                   to={{

@@ -24,7 +24,7 @@ class Dashboard extends Component {
     return (
       <div className="main-container">
         <Navbar
-          imageURL={images[0].url} 
+          imageURL={images[0].url || 'https://cdn.pixabay.com/photo/2017/06/08/17/32/not-found-2384304_1280.jpg'} 
           display_name={display_name}
           {...this.props}
         />
@@ -70,6 +70,7 @@ class Dashboard extends Component {
 
   componentDidMount = () => {
     const { current_user } = this.props.location.state;
+    console.log(current_user)
     if (current_user) {
       this.setState({ current_user })
     } else {
