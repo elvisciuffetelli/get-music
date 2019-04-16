@@ -35,9 +35,14 @@ render() {
         {...this.props} 
       />
       <div className="row">
-        <p>
-          Risultati album per { albums[0].artists[0].name}
-        </p>
+      {
+         albums.length ? 
+         <p>
+          Risultati album per {albums[0].artists[0].name}
+         </p> :
+         <p style={{ color: 'red' }}>Nessun risultato</p>
+      }
+        
       </div>
       <div className="row">
         {this.showAlbums(albums)}
