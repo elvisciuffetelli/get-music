@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar';
+import { Button } from 'semantic-ui-react';
 import CustomCard from '../Common/CustomCard';
 import { spotifyAlbumURL } from '../../constants';
 import './ArtistAlbums.css';
@@ -34,6 +35,9 @@ render() {
         display_name={display_name}
         {...this.props} 
       />
+      <div className="back-button-container-albums">
+        <Button onClick={this.routeBack} color="yellow" size="tiny" className="btn btn-outline-success">Back</Button>
+      </div>
       <div className="row">
       {
          albums.length ? 
@@ -58,6 +62,11 @@ render() {
     } else {
       this.props.history.push('/')
     }
+  }
+
+  routeBack = (event) => {
+    event.preventDefault();
+    this.props.history.goBack()
   }
 
   showAlbums = (albums) => {

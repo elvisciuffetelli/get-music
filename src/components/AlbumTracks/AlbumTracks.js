@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactPlayer from 'react-player'; 
 import Navbar from '../Navbar';
+import { Button } from 'semantic-ui-react';
 import CustomCard from "../Common/CustomCard";
 import './AlbumTracks.css';
 
@@ -23,6 +24,9 @@ class AlbumTracks extends Component {
           display_name={display_name} 
           {...this.props}
         />
+        <div className="back-button-container-albums">
+          <Button onClick={this.routeBack} color="yellow" size="tiny" className="btn btn-outline-success">Back</Button>
+        </div>
         <div className="justify-content-center mt-5 row">
           <p className="text-center display-5">
             Tracce dell'album { albumNameCleanedUp }
@@ -33,6 +37,11 @@ class AlbumTracks extends Component {
         </div>
       </div>
     )
+  }
+
+  routeBack = (event) => {
+    event.preventDefault();
+    this.props.history.goBack()
   }
 
   showTracks = (tracks) => {

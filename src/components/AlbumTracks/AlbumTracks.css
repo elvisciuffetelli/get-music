@@ -14,3 +14,7 @@
   background-color: #f3f3f3;
   margin: 1rem;
 }
+
+#root .back-button-container-albums {
+  padding: 1.5rem;
+}
