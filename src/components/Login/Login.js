@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import { Button, Header } from 'semantic-ui-react';
-import Loader from '../Common/Loader';
+import React, { Component } from "react";
+import { Button, Header } from "semantic-ui-react";
+import Loader from "../Common/Loader";
 import axios from "axios";
-import {
-  spotifyProfileURL
-} from "../../constants";
-import './Login.css';
+import { spotifyProfileURL } from "../../constants";
+import "./Login.css";
 
 class Login extends Component {
   constructor(props) {
@@ -15,7 +13,7 @@ class Login extends Component {
       authToken: "",
       authorized: false,
       profile: [],
-      loading: false
+      loading: false,
     };
   }
 
@@ -23,7 +21,7 @@ class Login extends Component {
     return (
       <div>
         <div className="header-container">
-          <Header as='h1' color="yellow">
+          <Header as="h1" color="yellow">
             {this.state.value}
           </Header>
           <span className="subtitle">
@@ -37,63 +35,56 @@ class Login extends Component {
                 ? "Autorizzato con successo! Clicca per entrare"
                 : "Clicca il bottone per autorizzare il tuo account Spotify ad utilizzare Get Music!"}
             </p>
-              <Button color='teal' onClick={this.handleAuthFlow}>
-              {
-                this.state.authorized
-                ? "Vai a Get Music"
-                : "Log in con Spotify"
-              }
-              </Button>
-              {
-                this.state.loading ?
-               <Loader/> :
-               null
-              }
+            <Button color="teal" onClick={this.handleAuthFlow}>
+              {this.state.authorized ? "Vai a Get Music" : "Log in con Spotify"}
+            </Button>
+            {!!this.state.loading && <Loader />}
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   componentDidMount = () => {
     let url = window.location.href;
     if (url.indexOf("token=") > -1) {
-      let authToken = url
-        .split("token=")[1]
-        .split("&")[0]
-        .trim();
+      let authToken = url.split("token=")[1].split("&")[0].trim();
       let authorized = true;
       this.setState({
         authToken,
-        authorized
+        authorized,
       });
-      window.localStorage.setItem('token', authToken);
+      window.localStorage.setItem("token", authToken);
     }
   };
 
-  handleAuthFlow = event => {
+  handleAuthFlow = (event) => {
     event.preventDefault();
     if (this.state.authorized) {
       const { authToken } = this.state;
       let user;
       axios
         .get(spotifyProfileURL + authToken)
-        .then(response => {
+        .then((response) => {
           this.setState({ profile: response.data });
           user = response.data;
           //console.log(this.state);
         })
-        .then(() => this.props.history.push('/get-music', {
-          current_user: { user },
-          auth: { authToken }
-        }))
-        .catch(error => {
+        .then(() =>
+          this.props.history.push("/get-music", {
+            current_user: { user },
+            auth: { authToken },
+          })
+        )
+        .catch((error) => {
           console.log(error);
-          window.location.assign("https://get-music-mybackend.herokuapp.com/login");
+          window.location.assign(
+            "https://get-music-mybackend.herokuapp.com/login"
+          );
         });
     } else {
       this.setState({ loading: true });
-      window.location="https://get-music-mybackend.herokuapp.com/login";
+      window.location = "https://get-music-mybackend.herokuapp.com/login";
     }
   };
 }
