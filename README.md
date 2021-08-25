@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## link to the Heroku app (please give it some time since it's a free dyno): <https://get-music-eciuffetelli-app.herokuapp.com/>
+
 ## Available Scripts
 
 In the project directory, you can run:
