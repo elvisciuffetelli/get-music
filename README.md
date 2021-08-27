@@ -1,7 +1,7 @@
 
 # A React app using the Spotify APIs
 
-### Link to the Heroku app (please give it some time  for the initial loading since it's a free dyno): <https://get-music-eciuffetelli-app.herokuapp.com/>
+### Link to the Heroku app (please give it some time  for the initial loading since it's a free dyno and goes in sleep mode in case of inactivity): <https://get-music-eciuffetelli-app.herokuapp.com/>
 
 ## Available Scripts
 
